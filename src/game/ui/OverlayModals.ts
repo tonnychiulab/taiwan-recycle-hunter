@@ -234,7 +234,17 @@ export class OverlayModals {
 						tag: { type: "good", text: "PARTNER" },
 						links: [
 							{ text: "Tonny 首頁", href: "https://tonny.tw" },
-							{ text: "Antigravity CLI", href: "https://antigravity.google" },
+							{ text: "Antigravity CLI", href: "https://antigravity.google/product/antigravity-cli/" },
+						],
+					},
+					{
+						icon: "🚀",
+						title: "致敬 Antigravity CLI",
+						desc: "特別致敬 Google DeepMind 開發的 Antigravity CLI，提供強大自主多代理環境、終端沙箱調度與極致工程協作體驗！",
+						tag: { type: "good", text: "TRIBUTE" },
+						links: [
+							{ text: "Antigravity CLI 官網", href: "https://antigravity.google/product/antigravity-cli/" },
+							{ text: "Google DeepMind", href: "https://deepmind.google" },
 						],
 					},
 					{
@@ -399,6 +409,11 @@ export class OverlayModals {
 		tonnyLink.target = "_blank";
 		tonnyLink.rel = "noopener noreferrer";
 
+		const agyLink = el("a", "credit-author-link", "Antigravity CLI");
+		agyLink.href = "https://antigravity.google/product/antigravity-cli/";
+		agyLink.target = "_blank";
+		agyLink.rel = "noopener noreferrer";
+
 		const pstackLink = el("a", "credit-author-link", "pstack (Lauren Tan)");
 		pstackLink.href = "https://github.com/cursor/plugins/tree/main/pstack";
 		pstackLink.target = "_blank";
@@ -408,7 +423,9 @@ export class OverlayModals {
 			creditBox,
 			el("span", "credit-tag", "共同開發"),
 			tonnyLink,
-			document.createTextNode(" × Antigravity CLI · "),
+			document.createTextNode(" × "),
+			agyLink,
+			document.createTextNode(" · "),
 			el("span", "credit-tag", "驅動模型"),
 			document.createTextNode("Gemini 4 Argon & 3.8 Flash · "),
 			el("span", "credit-tag", "致敬開源"),
