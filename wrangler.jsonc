@@ -3,6 +3,12 @@
 	"name": "taiwan-recycle-hunter",
 	"main": "worker/index.ts",
 	"compatibility_date": "2025-03-01",
+	"routes": [
+		{
+			"pattern": "pstack.tonny.tw",
+			"custom_domain": true
+		}
+	],
 	"assets": {
 		"directory": "./dist/client",
 		"binding": "ASSETS",
