@@ -373,8 +373,9 @@ export class OverlayModals {
 
 		const btnRow = el("div");
 		btnRow.style.display = "flex";
-		btnRow.style.gap = "10px";
-		btnRow.style.flexWrap = "wrap";
+		btnRow.style.flexDirection = "column";
+		btnRow.style.gap = "8px";
+		btnRow.style.width = "100%";
 
 		const startBtn = el("button", "btn-primary", "開始台灣街頭尋寶（75 秒）");
 		startBtn.dataset.testid = "start-game-btn";
@@ -383,9 +384,18 @@ export class OverlayModals {
 			callbacks.onStart();
 		});
 
-		const rankBtn = el("button", "btn-secondary", "查看街頭匿名排行榜");
+		const subBtnRow = el("div", "start-sub-actions");
+
+		const rankBtn = el("button", "btn-secondary", "🏆 查看匿名排行榜");
 		rankBtn.dataset.testid = "open-leaderboard-btn";
-		rankBtn.style.width = "100%";
+
+		const githubBtn = el("a", "btn-secondary btn-github-link", "⭐ GitHub 原始碼");
+		githubBtn.href = "https://github.com/tonnychiulab/taiwan-recycle-hunter";
+		githubBtn.target = "_blank";
+		githubBtn.rel = "noopener noreferrer";
+
+		appendNodes(subBtnRow, rankBtn, githubBtn);
+		appendNodes(btnRow, startBtn, subBtnRow);
 
 		const rankHolder = el("div");
 		rankHolder.style.marginTop = "10px";
@@ -433,7 +443,6 @@ export class OverlayModals {
 			pstackLink,
 		);
 
-		appendNodes(btnRow, startBtn, rankBtn);
 		appendNodes(info, badge, title, subtitle, guideTabs, guidePanel, btnRow, rankHolder, creditBox);
 		appendNodes(layout, visual, info);
 		card.appendChild(layout);

@@ -1,6 +1,41 @@
 # 巷弄尋寶：台灣資收達人 (Taiwan Recycle Hunter)
 
+<div align="center">
+
+[![馬上線上玩](https://img.shields.io/badge/🎮%20馬上線上玩-pstack.tonny.tw-22c55e?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pstack.tonny.tw)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-tonnychiulab%2Ftaiwan--recycle--hunter-181717?style=for-the-badge&logo=github)](https://github.com/tonnychiulab/taiwan-recycle-hunter)
+[![Cloudflare Workers](https://img.shields.io/badge/Edge-Cloudflare%20Workers%20%2B%20D1-f38020?style=for-the-badge&logo=cloudflare)](https://workers.cloudflare.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+
+### 🕹️ **[👉 點此立即線上暢玩：https://pstack.tonny.tw 👈](https://pstack.tonny.tw)**
+**免安裝 · 手機直拿橫拿無縫切換 · 台灣實景騎樓巷弄 · 全端邊緣雲運算**
+
+</div>
+
+---
+
 免安裝 HTML5 手機街頭動作遊戲。玩家推著資源回收手推車穿梭台灣騎樓磨石子走廊與紅磚巷弄，在交通號誌、標線、消防栓與彩繪電信箱之間，依台灣交通與資源回收法規撿取「可再利用資源回收物」，避開不可再生的一般髒污垃圾。
+
+---
+
+## 📸 遊戲實機畫面展示 (Screenshots)
+
+### 🎮 首頁介面與致敬
+| 手機直向開始介面 · 2x2 操作指南 | 共同開發者、AI 模型與全開源作者致敬 |
+| :---: | :---: |
+| <img src="docs/screenshots/01-start-portrait.png" width="360" alt="遊戲開始介面" /> | <img src="docs/screenshots/02-credits-portrait.png" width="360" alt="開源致敬頁籤" /> |
+
+### 🕹️ 直橫雙向無縫漫遊 · 街頭資收與道規
+| 雙手橫向街機：小綠人與行穿線漫遊 | 單手直向操作：騎樓磨石子與變電箱安全取物 |
+| :---: | :---: |
+| <img src="docs/screenshots/03-gameplay-landscape.png" width="460" alt="橫向街機遊戲" /> | <img src="docs/screenshots/04-gameplay-portrait.png" width="360" alt="直向遊戲畫面" /> |
+
+### 📸 局終拍立得留念 · 街頭匿名排行榜
+| 880x720 台灣街頭拍立得（精彩張力合成） | 零個資加鹽雜湊匿名排行榜 |
+| :---: | :---: |
+| <img src="docs/screenshots/05-polaroid-keepsake.png" width="460" alt="拍立得留念卡" /> | <img src="docs/screenshots/06-leaderboard.png" width="360" alt="街頭匿名排行榜" /> |
+
+---
 
 ## 核心工程特性
 
@@ -11,6 +46,20 @@
 - **零個資匿名排行榜與防作弊**。單一 Cloudflare Worker 同時託管靜態資源與 API，搭配 Cloudflare D1 SQLite 儲存排行。採用 HMAC-SHA256 簽章 Session、伺服器端得分與拾取時間軸合理性驗證，以及加鹽 IP 雜湊限流。
 - **台灣開源繁體字型**。內建本地端 Justfont 開放粉圓 (`jf-openhuninn-2.1.ttf`, SIL OFL)，搭配 `Noto Sans TC` 與 `JetBrains Mono`。
 
+---
+
+## 🤝 共同開發者與開源致敬 (Credits & Tribute)
+
+- **共同開發者**：[Tonny](https://tonny.tw) × [Antigravity CLI](https://antigravity.google/product/antigravity-cli/)
+- **AI 驅動模型**：Google DeepMind [Gemini 4 Argon (High)](https://deepmind.google) 形式化驗證與反作弊 + [Gemini 3.8 Flash (High)](https://deepmind.google) 代碼生成
+- **pstack 技能體系**：致敬作者 [Lauren Tan (@poteto)](https://github.com/poteto)，開源強大軟體工程體系 [pstack](https://github.com/cursor/plugins/tree/main/pstack)
+- **Phaser 3 遊戲引擎**：致敬 [Richard Davey / Photon Storm](https://phaser.io) 與 [Phaser 原始碼](https://github.com/phaserjs/phaser)
+- **開放粉圓字型**：致敬 [justfont 團隊](https://github.com/justfont/open-huninn-font) 與 [粉圓計畫](https://justfont.com/hungirl/)
+- **邊緣雲端架構**：致敬 [Cloudflare Workers & D1 團隊](https://github.com/cloudflare/workers-sdk)
+- **工程驗證工具鏈**：[Vite](https://vite.dev) / [Vitest](https://vitest.dev)（尤雨溪團隊）、[Playwright](https://playwright.dev)（微軟團隊）、[Zod](https://zod.dev)（Colin McDonnell）
+
+---
+
 ## 目錄結構
 
 - `src/shared/contracts.ts` 定義前後端共用的 Branded IDs、Zod 邊界驗證 Schema、資收物目錄與法規常數。
@@ -20,6 +69,8 @@
 - `migrations/0001_leaderboard.sql` Cloudflare D1 資料表與索引定義。
 - `verification/` TLA+ 形式化規格 (`legal_pickup.tla`) 與狀態空間窮舉檢查腳本。
 - `scripts/` 資產去背處理、形式化驗證、Playwright 雙引擎 E2E 驗證與 Token 統計腳本。
+
+---
 
 ## 本地開發與完整驗證指令
 
@@ -57,6 +108,8 @@ npm run verify:e2e
 ```bash
 npm run report:tokens
 ```
+
+---
 
 ## 部署至 Cloudflare
 

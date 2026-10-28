@@ -460,6 +460,31 @@ body {
 	color: #e2e8f0;
 }
 
+.start-sub-actions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	width: 100%;
+}
+
+.btn-github-link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	background: rgba(30, 41, 59, 0.85);
+	border: 1px solid rgba(245, 158, 11, 0.45);
+	color: #fde68a;
+	transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-github-link:hover,
+.btn-github-link:focus {
+	background: rgba(245, 158, 11, 0.22);
+	border-color: #f59e0b;
+	color: #ffffff;
+}
+
 .polaroid-strip {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
