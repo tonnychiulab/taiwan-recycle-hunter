@@ -1,26 +1,26 @@
 {
-  "measuredAt": "2026-10-28T10:31:36.179Z",
+  "measuredAt": "2026-10-28T13:19:35.786Z",
   "measurementBoundaryNote": "Counts exact step telemetry persisted in transcript.jsonl across root and all child subagents up to script execution time. The final closing assistant message in the root conversation flushes after turn completion.",
   "summary": {
     "conversations": 9,
-    "steps": 331,
-    "inputTokens": 2216320,
-    "cacheReadTokens": 38645908,
-    "outputTokens": 603053,
-    "uncachedIoTokens": 2819373,
-    "totalTokens": 41465281,
+    "steps": 679,
+    "inputTokens": 4156387,
+    "cacheReadTokens": 89426403,
+    "outputTokens": 741880,
+    "uncachedIoTokens": 4898267,
+    "totalTokens": 94324670,
     "generatedImages": 9
   },
   "byModel": [
     {
       "model": "Gemini 4 Argon (High)",
       "agents": 1,
-      "steps": 181,
-      "inputTokens": 818390,
-      "cacheReadTokens": 24865836,
-      "outputTokens": 224639,
-      "uncachedIoTokens": 1043029,
-      "totalTokens": 25908865
+      "steps": 529,
+      "inputTokens": 2758457,
+      "cacheReadTokens": 75646331,
+      "outputTokens": 363466,
+      "uncachedIoTokens": 3121923,
+      "totalTokens": 78768254
     },
     {
       "model": "Gemini 4 Argon (High) [inherit]",
@@ -51,14 +51,14 @@
       "role": "pstack Lead Orchestrator",
       "model": "Gemini 4 Argon (High)",
       "exists": true,
-      "steps": 181,
-      "inputTokens": 818390,
-      "cacheReadTokens": 24865836,
-      "outputTokens": 224639,
-      "uncachedIoTokens": 1043029,
-      "totalTokens": 25908865,
+      "steps": 529,
+      "inputTokens": 2758457,
+      "cacheReadTokens": 75646331,
+      "outputTokens": 363466,
+      "uncachedIoTokens": 3121923,
+      "totalTokens": 78768254,
       "generatedImages": 0,
-      "lastTimestamp": "2026-10-28T10:31:22Z"
+      "lastTimestamp": "2026-10-28T13:19:25Z"
     },
     {
       "conversationId": "49ed58b7-4de6-4eeb-9649-c1c0af5542c9",
