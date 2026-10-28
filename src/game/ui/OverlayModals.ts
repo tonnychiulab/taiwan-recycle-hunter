@@ -230,11 +230,11 @@ export class OverlayModals {
 					{
 						icon: "👨‍💻",
 						title: "共同開發者",
-						desc: "Tonny 與 Antigravity AI 共同協作開發，全流程負起架構品質與代碼維護責任。",
+						desc: "Tonny 與 Antigravity CLI 共同協作開發，全流程負起架構品質與代碼維護責任。",
 						tag: { type: "good", text: "PARTNER" },
 						links: [
 							{ text: "Tonny 首頁", href: "https://tonny.tw" },
-							{ text: "Antigravity AI", href: "https://deepmind.google" },
+							{ text: "Antigravity CLI", href: "https://antigravity.google" },
 						],
 					},
 					{
@@ -408,7 +408,7 @@ export class OverlayModals {
 			creditBox,
 			el("span", "credit-tag", "共同開發"),
 			tonnyLink,
-			document.createTextNode(" × Antigravity AI · "),
+			document.createTextNode(" × Antigravity CLI · "),
 			el("span", "credit-tag", "驅動模型"),
 			document.createTextNode("Gemini 4 Argon & 3.8 Flash · "),
 			el("span", "credit-tag", "致敬開源"),
