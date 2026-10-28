@@ -19,7 +19,7 @@
 		{
 			"binding": "DB",
 			"database_name": "taiwan-recycle-leaderboard",
-			"database_id": "00000000-0000-0000-0000-000000000000",
+			"database_id": "9ca6d24d-bd68-4cbe-8808-c2174ddfdc17",
 			"migrations_dir": "migrations"
 		}
 	]
