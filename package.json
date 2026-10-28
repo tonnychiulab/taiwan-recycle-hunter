@@ -1,0 +1,33 @@
+{
+	"name": "taiwan-recycle-hunter",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"description": "巷弄尋寶：台灣資收達人 - 2.5D Taiwan Street Reusable Recycling Mobile Web Game on Cloudflare Workers + D1",
+	"scripts": {
+		"dev:client": "vite --configLoader runner",
+		"build": "tsc --noEmit && vite build --configLoader runner",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run --configLoader runner",
+		"verify:formal": "node --experimental-strip-types scripts/verify-formal.ts",
+		"verify:e2e": "node scripts/verify-e2e.mjs",
+		"report:tokens": "node scripts/report-token-usage.mjs",
+		"db:migrate:local": "CI=1 wrangler d1 migrations apply taiwan-recycle-leaderboard --local",
+		"db:migrate:remote": "CI=1 wrangler d1 migrations apply taiwan-recycle-leaderboard --remote",
+		"preview:edge": "npm run build && npm run db:migrate:local && wrangler dev --port 8788",
+		"deploy": "npm run build && wrangler deploy"
+	},
+	"dependencies": {
+		"phaser": "^3.88.2",
+		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^5.20261023.1",
+		"@playwright/test": "^1.51.1",
+		"@types/node": "^22.13.10",
+		"typescript": "^5.8.2",
+		"vite": "^6.2.2",
+		"vitest": "^3.0.8",
+		"wrangler": "^4.4.0"
+	}
+}
