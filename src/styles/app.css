@@ -1,0 +1,303 @@
+@font-face {
+	font-family: "OpenHuninn";
+	src: url("/fonts/jf-openhuninn-2.1.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--font-display: "OpenHuninn", "Noto Sans TC", "PingFang TC", sans-serif;
+	--font-body: "Noto Sans TC", "OpenHuninn", "PingFang TC", sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
+	--safe-top: env(safe-area-inset-top, 0px);
+	--safe-right: env(safe-area-inset-right, 0px);
+	--safe-bottom: env(safe-area-inset-bottom, 0px);
+	--safe-left: env(safe-area-inset-left, 0px);
+	--tw-green: #16a34a;
+	--tw-emerald: #10b981;
+	--tw-amber: #f59e0b;
+	--tw-red: #dc2626;
+	--tw-ink: #111815;
+	--tw-paper: #fcf8ee;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	height: 100dvh;
+	overflow: hidden;
+	background: #141d18;
+	color: #f8fafc;
+	font-family: var(--font-body);
+	touch-action: none;
+	overscroll-behavior: none;
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+}
+
+#app-shell {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#phaser-root {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#phaser-root canvas {
+	display: block;
+	width: 100% !important;
+	height: 100% !important;
+	touch-action: none;
+}
+
+#overlay-root {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 20;
+	padding: calc(var(--safe-top) + 8px) calc(var(--safe-right) + 10px)
+		calc(var(--safe-bottom) + 8px) calc(var(--safe-left) + 10px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-backdrop {
+	pointer-events: auto;
+	position: fixed;
+	inset: 0;
+	background: rgba(12, 19, 16, 0.84);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: calc(var(--safe-top) + 12px) calc(var(--safe-right) + 12px)
+		calc(var(--safe-bottom) + 12px) calc(var(--safe-left) + 12px);
+	overflow-y: auto;
+	touch-action: pan-y;
+}
+
+.taiwan-card {
+	width: min(94vw, 860px);
+	max-height: calc(100dvh - var(--safe-top) - var(--safe-bottom) - 24px);
+	overflow-y: auto;
+	touch-action: pan-y;
+	background: linear-gradient(165deg, #1b2821 0%, #111915 100%);
+	border: 2px solid rgba(52, 211, 153, 0.42);
+	border-radius: 22px;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.62);
+	padding: 20px;
+	color: #f8fafc;
+}
+
+.hero-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 16px;
+}
+
+@media (orientation: landscape) and (min-width: 640px) {
+	.hero-layout {
+		grid-template-columns: 1.05fr 0.95fr;
+		align-items: center;
+	}
+}
+
+.hero-visual {
+	position: relative;
+	border-radius: 16px;
+	overflow: hidden;
+	border: 2px solid rgba(251, 191, 36, 0.45);
+	aspect-ratio: 16 / 9;
+	background: #1c2520;
+}
+
+.hero-visual img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.signboard-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: #fef3c7;
+	color: #92400e;
+	font-family: var(--font-display);
+	font-size: 0.82rem;
+	padding: 4px 12px;
+	border-radius: 999px;
+	border: 2px solid #f59e0b;
+	letter-spacing: 0.04em;
+}
+
+.game-title {
+	font-family: var(--font-display);
+	font-size: clamp(1.55rem, 4.4vw, 2.35rem);
+	line-height: 1.2;
+	margin: 8px 0 6px;
+	color: #fefce8;
+	text-shadow: 0 3px 0 #064e3b;
+}
+
+.rule-pills {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 8px;
+	margin: 10px 0 14px;
+}
+
+.rule-pill {
+	background: rgba(255, 255, 255, 0.06);
+	border: 1px solid rgba(255, 255, 255, 0.14);
+	border-radius: 12px;
+	padding: 8px 10px;
+	font-size: 0.8rem;
+	line-height: 1.35;
+}
+
+.rule-pill strong {
+	display: block;
+	font-family: var(--font-display);
+	color: #6ee7b7;
+	margin-bottom: 2px;
+}
+
+.btn-primary {
+	appearance: none;
+	border: none;
+	cursor: pointer;
+	font-family: var(--font-display);
+	font-size: 1.12rem;
+	padding: 13px 22px;
+	border-radius: 14px;
+	background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+	color: #ffffff;
+	box-shadow: 0 4px 0 #14532d, 0 10px 24px rgba(34, 197, 94, 0.32);
+	transition: transform 0.08s ease;
+	width: 100%;
+}
+
+.btn-primary:active {
+	transform: translateY(2px);
+}
+
+.btn-secondary {
+	appearance: none;
+	border: 1px solid rgba(148, 163, 184, 0.4);
+	cursor: pointer;
+	font-family: var(--font-display);
+	font-size: 0.92rem;
+	padding: 9px 14px;
+	border-radius: 11px;
+	background: rgba(30, 41, 59, 0.72);
+	color: #e2e8f0;
+}
+
+.polaroid-strip {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	gap: 14px;
+	margin: 12px 0;
+}
+
+.polaroid-item {
+	background: var(--tw-paper);
+	color: var(--tw-ink);
+	border-radius: 12px;
+	padding: 10px 10px 12px;
+	box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+}
+
+.polaroid-item img {
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+	display: block;
+	user-select: auto;
+	-webkit-user-select: auto;
+	-webkit-touch-callout: default;
+}
+
+.polaroid-actions {
+	display: flex;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.polaroid-actions button,
+.polaroid-actions a {
+	flex: 1;
+	text-align: center;
+	text-decoration: none;
+	font-family: var(--font-display);
+	font-size: 0.82rem;
+	padding: 7px 10px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	background: #0f766e;
+	color: #ffffff;
+}
+
+.leaderboard-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.86rem;
+	margin-top: 8px;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+	padding: 7px 8px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: left;
+}
+
+.leaderboard-table td.num,
+.leaderboard-table th.num {
+	text-align: right;
+	font-family: var(--font-mono);
+	font-variant-numeric: tabular-nums;
+}
+
+.leaderboard-row-self {
+	background: rgba(16, 185, 129, 0.22);
+	font-weight: 700;
+}
+
+.alias-input {
+	width: 100%;
+	padding: 9px 12px;
+	border-radius: 10px;
+	border: 1px solid rgba(110, 231, 183, 0.45);
+	background: rgba(15, 23, 42, 0.78);
+	color: #f8fafc;
+	font-family: var(--font-display);
+	font-size: 0.96rem;
+	user-select: text;
+	-webkit-user-select: text;
+}

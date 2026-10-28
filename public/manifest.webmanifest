@@ -1,0 +1,10 @@
+{
+	"name": "巷弄尋寶：台灣資收達人",
+	"short_name": "資收達人",
+	"description": "台灣街頭巷弄可再利用資源回收 2.5D 手機網頁遊戲",
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "any",
+	"background_color": "#162019",
+	"theme_color": "#162019"
+}
