@@ -57,7 +57,7 @@ If covered files drifted across earlier commits without re-running this check, u
 
 ## Coverage sync record
 
-Last confirmed sync state on `unborn-main` before the initial commit. Verify file digests with `shasum -a 256`, and advance the sync commit or digests only after `npm run verify:formal` passes on the updated code:
+Last confirmed sync state at commit `23000d3` on `main`. Verify file digests with `shasum -a 256`, and advance the sync commit or digests only after `npm run verify:formal` passes on the updated code:
 
 - `src/domain/legal-engine.ts`: `b89d3249ed2fff3b3fdc25138f0b11063de4ac2a0c82eb62ca605f8be27e64dd`
 - `src/domain/street-map.ts`: `ac6ea53fd93a8df8889aac9a34085112b00255c365522ecd218cea67fb76a6fc`

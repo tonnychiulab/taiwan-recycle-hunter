@@ -1,0 +1,11 @@
+conversation_id	type	role	model	steps	input_tokens	cache_read_tokens	output_tokens	uncached_io_tokens	total_tokens	last_timestamp
+55a1a5e1-f68c-468e-b68c-eb2c7ba3cbdf	main-orchestrator	pstack Lead Orchestrator	Gemini 4 Argon (High)	181	818390	24865836	224639	1043029	25908865	2026-10-28T10:31:22Z
+49ed58b7-4de6-4eeb-9649-c1c0af5542c9	poteto-agent	Domain Architect Candidate 1	Gemini 4 Argon (High) [inherit]	5	74290	84214	43988	118278	202492	2026-10-28T09:08:30Z
+7fc059fc-4a4a-4168-af6c-d83cd6a128bb	poteto-agent	Domain Architect Candidate 2	Gemini 4 Argon (High) [inherit]	6	67969	106003	37644	105613	211616	2026-10-28T09:07:16Z
+bb5ee3e0-6c7b-4896-ae51-94e6d6fac989	image-generator	Taiwan Street Asset Artist	Gemini 4 Argon (High) [inherit] + Built-in Image Generation Model	13	84957	112383	10527	95484	207867	2026-10-28T09:06:02Z
+e283eb02-0083-42e1-bf9f-cd455d5bb0cc	poteto-worker	Domain & Formal Verification Engineer	Gemini 4 Argon (High) [inherit]	46	247719	5899767	123943	371662	6271429	2026-10-28T09:38:09Z
+fd09dc01-f441-4e9e-a8b6-8b6328eb488c	poteto-worker	Cloudflare Edge & Anti-Cheat Engineer	Gemini 4 Argon (High) [inherit]	28	129891	1737596	57260	187151	1924747	2026-10-28T09:25:46Z
+20e9df5d-2c05-4d7a-a8d3-86576f9a89ad	poteto-agent	Adversarial Codebase Interrogator	Gemini 4 Argon (High) [inherit]	21	238486	2816607	68485	306971	3123578	2026-10-28T10:13:15Z
+429d374e-5a3b-4723-a902-1bedcb1787cd	comment-sicko	Comment Hygiene Auditor	Gemini 4 Argon (High) [inherit]	13	217879	1579867	19459	237338	1817205	2026-10-28T10:04:01Z
+2b566fd1-2184-4d1d-9783-d004cb6ae096	poteto-agent	Decision Trail Auditor	Gemini 4 Argon (High) [inherit]	18	336739	1443635	17108	353847	1797482	2026-10-28T10:08:21Z
+TOTAL	all	9 conversations	3 model tiers	331	2216320	38645908	603053	2819373	41465281	2026-10-28T10:31:36.177Z
