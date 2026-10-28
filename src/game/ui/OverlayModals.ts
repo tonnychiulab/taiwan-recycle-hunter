@@ -251,7 +251,7 @@ export class OverlayModals {
 					{
 						icon: "🧠",
 						title: "AI 驅動模型",
-						desc: "全鏈路多代理架構，採用 Gemini 4 Argon (High) 形式驗證與反作弊，Gemini 3.8 Flash (High) 代碼生成。",
+						desc: "全鏈路多代理嚴謹協作，由 Gemini 4 Argon (High) 形式驗證與反作弊，Gemini 3.8 Flash (High) 代碼生成，全流程記錄 Token 消耗帳本。",
 						tag: { type: "good", text: "GEMINI" },
 						links: [
 							{ text: "Google DeepMind", href: "https://deepmind.google" },
@@ -260,7 +260,7 @@ export class OverlayModals {
 					{
 						icon: "🙏",
 						title: "致敬 pstack 作者",
-						desc: "特別致敬 pstack 開源技能作者 Lauren Tan（@poteto），開源了極為強大的軟體工程技能體系，驅動雙代理競技、TLA+ 形式驗證、對抗審查與零註解工程落地！",
+						desc: "特別致敬 pstack 開源技能作者 Lauren Tan（@poteto）！本專案全程嚴格以 pstack 自主軟體工程體系開發，嚴守雙代理競技、TLA+ 狀態窮舉、紅隊審查與零註解落地！",
 						tag: { type: "good", text: "TRIBUTE" },
 						links: [
 							{ text: "pstack 原始碼", href: "https://github.com/cursor/plugins/tree/main/pstack" },
@@ -432,15 +432,16 @@ export class OverlayModals {
 
 		appendNodes(
 			creditBox,
+			el("span", "credit-tag", "架構體系"),
+			pstackLink,
+			document.createTextNode(" · "),
 			el("span", "credit-tag", "共同開發"),
 			tonnyLink,
 			document.createTextNode(" × "),
 			agyLink,
 			document.createTextNode(" · "),
 			el("span", "credit-tag", "驅動模型"),
-			document.createTextNode("Gemini 4 Argon & 3.8 Flash · "),
-			el("span", "credit-tag", "致敬開源"),
-			pstackLink,
+			document.createTextNode("Gemini 4 Argon & 3.8 Flash"),
 		);
 
 		appendNodes(info, badge, title, subtitle, guideTabs, guidePanel, btnRow, rankHolder, creditBox);
