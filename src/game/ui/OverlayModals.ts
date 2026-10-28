@@ -235,6 +235,7 @@ export class OverlayModals {
 						links: [
 							{ text: "Tonny 首頁", href: "https://tonny.tw" },
 							{ text: "Antigravity CLI", href: "https://antigravity.google/product/antigravity-cli/" },
+							{ text: "遊戲 GitHub 原始碼", href: "https://github.com/tonnychiulab/taiwan-recycle-hunter" },
 						],
 					},
 					{
