@@ -226,6 +226,35 @@ export class OverlayModals {
 					},
 				],
 			},
+			{
+				id: "credits",
+				label: "🤝 開發與致敬",
+				items: [
+					{
+						icon: "👨‍💻",
+						title: "共同開發者",
+						desc: "Tonny 與 Antigravity AI 共同協作開發，全流程負起架構品質與代碼維護責任。",
+						tag: { type: "good", text: "PARTNER" },
+					},
+					{
+						icon: "🧠",
+						title: "AI 驅動模型",
+						desc: "全鏈路多代理架構：Gemini 4 Argon (High) 形式驗證與反作弊 + Gemini 3.8 Flash (High)。",
+						tag: { type: "good", text: "GEMINI" },
+					},
+					{
+						icon: "🙏",
+						title: "致敬 pstack 作者",
+						desc: "特別致敬 pstack 開源技能作者！開源了極為強大的軟體工程技能體系，驅動雙代理競技、TLA+ 形式驗證、對抗審查與零註解落地！",
+						tag: { type: "good", text: "TRIBUTE" },
+					},
+					{
+						icon: "🛡️",
+						title: "工程品質保證",
+						desc: "13,752 狀態無反例、Playwright 雙引擎實測、Cloudflare Worker + D1 全端運行。",
+					},
+				],
+			},
 		];
 
 		let activeTabId = "controls";
@@ -308,8 +337,19 @@ export class OverlayModals {
 			});
 		});
 
+		const creditBox = el("div", "start-credit-box");
+		appendNodes(
+			creditBox,
+			el("span", "credit-tag", "共同開發"),
+			document.createTextNode("Tonny × Antigravity AI · "),
+			el("span", "credit-tag", "驅動模型"),
+			document.createTextNode("Gemini 4 Argon & 3.8 Flash · "),
+			el("span", "credit-tag", "特別致敬"),
+			document.createTextNode("pstack 開源技能作者"),
+		);
+
 		appendNodes(btnRow, startBtn, rankBtn);
-		appendNodes(info, badge, title, subtitle, guideTabs, guidePanel, btnRow, rankHolder);
+		appendNodes(info, badge, title, subtitle, guideTabs, guidePanel, btnRow, rankHolder, creditBox);
 		appendNodes(layout, visual, info);
 		card.appendChild(layout);
 		backdrop.appendChild(card);
