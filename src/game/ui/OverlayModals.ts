@@ -129,13 +129,9 @@ export class OverlayModals {
 		const title = el("h1", "game-title", "巷弄尋寶：台灣資收達人");
 		const subtitle = el(
 			"p",
-			"",
-			"穿梭台灣騎樓與紅磚巷弄，去彩繪變電箱、消防栓與號誌桿旁尋找「可再利用資收寶物」，小心避開一般髒污垃圾！手機直拿單手、橫拿雙手皆可無縫暢玩。",
+			"hero-subtitle",
+			"穿梭台灣騎樓與紅磚巷弄，尋找可再利用寶物，避開髒污垃圾！直拿單手、橫拿雙手無縫暢玩。",
 		);
-		subtitle.style.margin = "4px 0 10px";
-		subtitle.style.fontSize = "0.88rem";
-		subtitle.style.color = "#CBD5E1";
-		subtitle.style.lineHeight = "1.45";
 
 		const guideTabs = el("div", "guide-tabs");
 		const guidePanel = el("div", "guide-panel");
