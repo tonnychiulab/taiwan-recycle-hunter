@@ -154,6 +154,20 @@ async function runGameplayInPage(page, options) {
 		path: path.join(ARTIFACT_DIR, `${screenshotPrefix}-start-portrait.png`),
 	});
 
+	if (laneName === "android-chromium") {
+		const creditsTab = await page.$('[data-tab-id="credits"]');
+		if (creditsTab) {
+			await creditsTab.click();
+			await page.screenshot({
+				path: path.join(ARTIFACT_DIR, `${screenshotPrefix}-credits-portrait.png`),
+			});
+			const controlsTab = await page.$('[data-tab-id="controls"]');
+			if (controlsTab) {
+				await controlsTab.click();
+			}
+		}
+	}
+
 	await page.click('[data-testid="start-game-btn"]');
 	await page.waitForFunction(
 		() => {

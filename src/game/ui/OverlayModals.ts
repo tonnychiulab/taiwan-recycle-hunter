@@ -144,6 +144,7 @@ export class OverlayModals {
 				readonly title: string;
 				readonly desc: string;
 				readonly tag?: { readonly type: "good" | "bad"; readonly text: string };
+				readonly links?: ReadonlyArray<{ readonly text: string; readonly href: string }>;
 			}>;
 		}> = [
 			{
@@ -231,23 +232,71 @@ export class OverlayModals {
 						title: "共同開發者",
 						desc: "Tonny 與 Antigravity AI 共同協作開發，全流程負起架構品質與代碼維護責任。",
 						tag: { type: "good", text: "PARTNER" },
+						links: [
+							{ text: "Tonny 首頁", href: "https://tonny.tw" },
+							{ text: "Antigravity AI", href: "https://deepmind.google" },
+						],
 					},
 					{
 						icon: "🧠",
 						title: "AI 驅動模型",
-						desc: "全鏈路多代理架構：Gemini 4 Argon (High) 形式驗證與反作弊 + Gemini 3.8 Flash (High)。",
+						desc: "全鏈路多代理架構，採用 Gemini 4 Argon (High) 形式驗證與反作弊，Gemini 3.8 Flash (High) 代碼生成。",
 						tag: { type: "good", text: "GEMINI" },
+						links: [
+							{ text: "Google DeepMind", href: "https://deepmind.google" },
+						],
 					},
 					{
 						icon: "🙏",
 						title: "致敬 pstack 作者",
-						desc: "特別致敬 pstack 開源技能作者！開源了極為強大的軟體工程技能體系，驅動雙代理競技、TLA+ 形式驗證、對抗審查與零註解落地！",
+						desc: "特別致敬 pstack 開源技能作者 Lauren Tan（@poteto），開源了極為強大的軟體工程技能體系，驅動雙代理競技、TLA+ 形式驗證、對抗審查與零註解工程落地！",
 						tag: { type: "good", text: "TRIBUTE" },
+						links: [
+							{ text: "pstack 原始碼", href: "https://github.com/cursor/plugins/tree/main/pstack" },
+							{ text: "Lauren Tan GitHub", href: "https://github.com/poteto" },
+						],
 					},
 					{
-						icon: "🛡️",
-						title: "工程品質保證",
-						desc: "13,752 狀態無反例、Playwright 雙引擎實測、Cloudflare Worker + D1 全端運行。",
+						icon: "🎮",
+						title: "Phaser 3 遊戲引擎",
+						desc: "感謝 Richard Davey 與 Photon Storm 打造強大開源 2D 網頁遊戲引擎，實現雙視向流暢街頭漫遊。",
+						tag: { type: "good", text: "ENGINE" },
+						links: [
+							{ text: "Phaser 官網", href: "https://phaser.io" },
+							{ text: "Phaser GitHub", href: "https://github.com/phaserjs/phaser" },
+						],
+					},
+					{
+						icon: "🔤",
+						title: "開放粉圓字型",
+						desc: "感謝 justfont 團隊開源充滿台灣街頭溫度與人情味的開放粉圓 2.1 字型。",
+						tag: { type: "good", text: "FONT" },
+						links: [
+							{ text: "justfont 粉圓計畫", href: "https://justfont.com/hungirl/" },
+							{ text: "粉圓 GitHub", href: "https://github.com/justfont/open-huninn-font" },
+						],
+					},
+					{
+						icon: "☁️",
+						title: "Cloudflare 邊緣運算",
+						desc: "全端部署於 Cloudflare 全球邊緣網路，D1 邊緣資料庫提供超低延遲反作弊排行榜。",
+						tag: { type: "good", text: "EDGE" },
+						links: [
+							{ text: "Cloudflare Workers", href: "https://workers.cloudflare.com" },
+							{ text: "workers-sdk GitHub", href: "https://github.com/cloudflare/workers-sdk" },
+						],
+					},
+					{
+						icon: "🛠️",
+						title: "現代開源工程工具鏈",
+						desc: "感謝尤雨溪團隊打造 Vite 與 Vitest，微軟開源 Playwright 跨引擎 E2E，以及 Colin McDonnell 打造 Zod 型別契約防線。",
+						tag: { type: "good", text: "TOOLING" },
+						links: [
+							{ text: "Vite", href: "https://vite.dev" },
+							{ text: "Vitest", href: "https://vitest.dev" },
+							{ text: "Playwright", href: "https://playwright.dev" },
+							{ text: "Zod", href: "https://zod.dev" },
+						],
 					},
 				],
 			},
@@ -271,6 +320,17 @@ export class OverlayModals {
 					textEl.appendChild(el("span", badgeCls, it.tag.text));
 				}
 				appendNodes(textEl, el("strong", "", it.title), document.createTextNode(it.desc));
+				if (it.links && it.links.length > 0) {
+					const linksRow = el("div", "guide-links-row");
+					for (const lk of it.links) {
+						const a = el("a", "guide-external-link", lk.text);
+						a.href = lk.href;
+						a.target = "_blank";
+						a.rel = "noopener noreferrer";
+						linksRow.appendChild(a);
+					}
+					textEl.appendChild(linksRow);
+				}
 				appendNodes(itemEl, iconEl, textEl);
 				guidePanel.appendChild(itemEl);
 			}
@@ -334,14 +394,25 @@ export class OverlayModals {
 		});
 
 		const creditBox = el("div", "start-credit-box");
+		const tonnyLink = el("a", "credit-author-link", "Tonny");
+		tonnyLink.href = "https://tonny.tw";
+		tonnyLink.target = "_blank";
+		tonnyLink.rel = "noopener noreferrer";
+
+		const pstackLink = el("a", "credit-author-link", "pstack (Lauren Tan)");
+		pstackLink.href = "https://github.com/cursor/plugins/tree/main/pstack";
+		pstackLink.target = "_blank";
+		pstackLink.rel = "noopener noreferrer";
+
 		appendNodes(
 			creditBox,
 			el("span", "credit-tag", "共同開發"),
-			document.createTextNode("Tonny × Antigravity AI · "),
+			tonnyLink,
+			document.createTextNode(" × Antigravity AI · "),
 			el("span", "credit-tag", "驅動模型"),
 			document.createTextNode("Gemini 4 Argon & 3.8 Flash · "),
-			el("span", "credit-tag", "特別致敬"),
-			document.createTextNode("pstack 開源技能作者"),
+			el("span", "credit-tag", "致敬開源"),
+			pstackLink,
 		);
 
 		appendNodes(btnRow, startBtn, rankBtn);
