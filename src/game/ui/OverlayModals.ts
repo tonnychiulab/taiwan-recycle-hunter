@@ -137,18 +137,143 @@ export class OverlayModals {
 		subtitle.style.color = "#CBD5E1";
 		subtitle.style.lineHeight = "1.45";
 
-		const pills = el("div", "rule-pills");
-		const ruleData: ReadonlyArray<readonly [string, string]> = [
-			["小綠人與斑馬線", "綠燈走行穿線過街，切勿闖紅燈或穿越車道"],
-			["消防栓 5m 禁推車", "推車先停白線或黃線(限3秒)，再徒步快取寶物"],
-			["無號誌巷口「停」", "遇八角形停標誌先停頓 0.4 秒確認來車"],
-			["撿資收 ≠ 撿垃圾", "寶特瓶/鋁罐/紙箱/3C 可再利用，油便當與菸蒂扣分"],
+		const guideTabs = el("div", "guide-tabs");
+		const guidePanel = el("div", "guide-panel");
+
+		const tabDefs: ReadonlyArray<{
+			readonly id: string;
+			readonly label: string;
+			readonly items: ReadonlyArray<{
+				readonly icon: string;
+				readonly title: string;
+				readonly desc: string;
+				readonly tag?: { readonly type: "good" | "bad"; readonly text: string };
+			}>;
+		}> = [
+			{
+				id: "controls",
+				label: "🎮 操作指南",
+				items: [
+					{
+						icon: "🕹️",
+						title: "角色移動",
+						desc: "手機拖曳左下搖桿移動；電腦使用 W A S D 或方向鍵。",
+					},
+					{
+						icon: "🟢",
+						title: "撿取資收",
+						desc: "靠近發光寶物點擊右下「撿資收」（電腦：Space 或 E）。",
+					},
+					{
+						icon: "🔵",
+						title: "推車與徒步",
+						desc: "停在白線格/暫置區切換徒步；走近 2.3m 取車卸貨入車（電腦：C）。",
+					},
+					{
+						icon: "📱",
+						title: "直橫隨轉",
+						desc: "單手直向漫遊、雙手橫向街機，局中任意旋轉無縫切換！",
+					},
+				],
+			},
+			{
+				id: "recyclables",
+				label: "♻️ 資收 vs 垃圾",
+				items: [
+					{
+						icon: "⭕",
+						title: "可再利用寶物",
+						desc: "寶特瓶、鋁罐、紙箱、鐵罐、玻璃瓶、廢電池、3C 設備。",
+						tag: { type: "good", text: "加分+減碳" },
+					},
+					{
+						icon: "✨",
+						title: "清・分・壓三連",
+						desc: "各集滿一種清洗、分類、壓縮物品，觸發完美三連獎勵 +120 分！",
+						tag: { type: "good", text: "COMBO" },
+					},
+					{
+						icon: "❌",
+						title: "一般髒污垃圾",
+						desc: "油便當盒、衛生紙、菸蒂、髒塑膠袋。誤撿倒扣分數且中斷連段！",
+						tag: { type: "bad", text: "嚴禁撿拾" },
+					},
+				],
+			},
+			{
+				id: "rules",
+				label: "⚖️ 街頭法規",
+				items: [
+					{
+						icon: "🚦",
+						title: "小綠人與行穿線",
+						desc: "綠燈走行穿線安全過街；闖紅燈或穿越車道會被開單舉發！",
+					},
+					{
+						icon: "🚒",
+						title: "消防栓 5m 禁推車",
+						desc: "推車推入 5m 紅圈立即舉發！先停在白線格再徒步快取（限逗留 3 秒）。",
+					},
+					{
+						icon: "🛑",
+						title: "無號誌巷口「停」",
+						desc: "遇八角形「停」標誌先靜止 0.4 秒確認無車，逕自闖入會被開單！",
+					},
+					{
+						icon: "📸",
+						title: "自動抓拍拍立得",
+						desc: "75 秒結算自動合成 Top-3 精彩照片，長按或點擊可存入手機相簿！",
+					},
+				],
+			},
 		];
-		for (const [head, desc] of ruleData) {
-			const pill = el("div", "rule-pill");
-			appendNodes(pill, el("strong", "", head), document.createTextNode(desc));
-			pills.appendChild(pill);
+
+		let activeTabId = "controls";
+
+		const renderGuideContent = (tabId: string) => {
+			activeTabId = tabId;
+			guidePanel.replaceChildren();
+			const activeDef = tabDefs.find((t) => t.id === tabId) ?? tabDefs[0];
+			if (!activeDef) return;
+
+			for (const it of activeDef.items) {
+				const itemEl = el("div", "guide-item");
+				const iconEl = el("span", "guide-icon", it.icon);
+				const textEl = el("div", "guide-text");
+
+				if (it.tag) {
+					const badgeCls = it.tag.type === "good" ? "guide-badge-good" : "guide-badge-bad";
+					textEl.appendChild(el("span", badgeCls, it.tag.text));
+				}
+				appendNodes(textEl, el("strong", "", it.title), document.createTextNode(it.desc));
+				appendNodes(itemEl, iconEl, textEl);
+				guidePanel.appendChild(itemEl);
+			}
+
+			const buttons = guideTabs.querySelectorAll<HTMLButtonElement>(".guide-tab");
+			buttons.forEach((btn) => {
+				if (btn.dataset.tabId === tabId) {
+					btn.classList.add("active");
+				} else {
+					btn.classList.remove("active");
+				}
+			});
+		};
+
+		for (const def of tabDefs) {
+			const tabBtn = el("button", "guide-tab", def.label);
+			tabBtn.type = "button";
+			tabBtn.dataset.tabId = def.id;
+			if (def.id === activeTabId) {
+				tabBtn.classList.add("active");
+			}
+			tabBtn.addEventListener("click", () => {
+				renderGuideContent(def.id);
+			});
+			guideTabs.appendChild(tabBtn);
 		}
+
+		renderGuideContent(activeTabId);
 
 		const btnRow = el("div");
 		btnRow.style.display = "flex";
@@ -184,7 +309,7 @@ export class OverlayModals {
 		});
 
 		appendNodes(btnRow, startBtn, rankBtn);
-		appendNodes(info, badge, title, subtitle, pills, btnRow, rankHolder);
+		appendNodes(info, badge, title, subtitle, guideTabs, guidePanel, btnRow, rankHolder);
 		appendNodes(layout, visual, info);
 		card.appendChild(layout);
 		backdrop.appendChild(card);
